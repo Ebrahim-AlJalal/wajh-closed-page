@@ -1,294 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wajh | Web Development Services</title>
-    <meta name="description" content="Wajh offers premium web development services. We are launching soon.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0ea5e9;
-            --primary-dark: #0284c7;
-            --accent: #38bdf8;
-            --bg-color: #030712;
-            --text-main: #f9fafb;
-            --text-muted: #9ca3af;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Abstract Background Elements */
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            z-index: 0;
-            opacity: 0.6;
-            animation: float 10s infinite ease-in-out alternate;
-        }
-
-        .blob-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--primary) 0%, rgba(14, 165, 233, 0) 70%);
-            top: -100px;
-            left: -100px;
-        }
-
-        .blob-2 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
-            bottom: -200px;
-            right: -100px;
-            animation-delay: -5s;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 50px) scale(1.1); }
-        }
-
-        /* Glassmorphism Container */
-        .container {
-            position: relative;
-            z-index: 1;
-            background: rgba(17, 24, 39, 0.4);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 4rem 3rem;
-            max-width: 600px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: fadeUp 1s ease-out;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .logo {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #ffffff, #d1d5db);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(14, 165, 233, 0.1);
-            color: var(--accent);
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        p {
-            color: var(--text-muted);
-            font-size: 1.125rem;
-            line-height: 1.6;
-            margin-bottom: 2.5rem;
-        }
-
-        .notify-form {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .notify-input {
-            flex: 1;
-            min-width: 200px;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.2);
-            color: var(--text-main);
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .notify-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
-        }
-
-        .notify-input::placeholder {
-            color: #6b7280;
-        }
-
-        .notify-btn {
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            border: none;
-            background: var(--primary);
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .notify-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .notify-btn:active {
-            transform: translateY(0);
-        }
-
-        .socials {
-            margin-top: 3rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .social-link:hover {
-            color: var(--primary);
-        }
-
-        .social-link svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Particles */
-        #particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        @media (max-width: 640px) {
-            h1 { font-size: 2rem; }
-            .container { padding: 3rem 2rem; }
-            .notify-form { flex-direction: column; }
-            .notify-btn { width: 100%; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wajh - وجــه</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Design Variables */
+    :root {
+      --primary-color: #601a2e; /* Burgundy accent matching the dots in the logo */
+      --text-dark: #1e1e24;
+      --text-muted: #5e646e;
+      --bg-gradient: linear-gradient(135deg, #fefefe 0%, #f4f5f8 100%);
+      --card-bg: rgba(255, 255, 255, 0.4);
+      --card-border: rgba(255, 255, 255, 0.5);
+      --card-shadow: 0 30px 60px rgba(0, 0, 0, 0.03);
+      --font-en: 'Outfit', sans-serif;
+      --font-ar: 'Tajawal', sans-serif;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background: #fafafa;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      color: var(--text-dark);
+      padding: 24px;
+    }
+    
+    /* Background wave container */
+    .background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      background: var(--bg-gradient);
+    }
+    
+    /* Waves styling */
+    .wave-svg {
+      position: absolute;
+      width: 250%; /* Wider to allow seamless horizontal sliding */
+      height: 120%;
+      bottom: -10%;
+      left: 0;
+      transform: translate3d(0, 0, 0);
+      pointer-events: none;
+    }
+    
+    /* Animating individual wave paths */
+    .wave-layer-1 {
+      animation: wave-flow-left 32s infinite linear;
+      fill: url(#wave-grad-1);
+    }
+    
+    .wave-layer-2 {
+      animation: wave-flow-right 24s infinite linear;
+      fill: url(#wave-grad-2);
+    }
+    
+    .wave-layer-3 {
+      animation: wave-flow-left 18s infinite linear;
+      fill: url(#wave-grad-3);
+    }
+    
+    /* Wave animation keyframes. 
+       We translate by exactly half of the repeating path to create a seamless loop.
+    */
+    @keyframes wave-flow-left {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(-50%, 0, 0);
+      }
+    }
+    
+    @keyframes wave-flow-right {
+      0% {
+        transform: translate3d(-50%, 0, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    
+    /* Main Content Card */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--card-border);
+      border-radius: 36px;
+      padding: 60px 48px;
+      width: 100%;
+      max-width: 580px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+      animation: card-enter 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 0.4s;
+    }
+    
+    @keyframes card-enter {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    /* Logo Container with a premium, circular appearance */
+    .logo-wrapper {
+      position: relative;
+      width: 155px;
+      height: 155px;
+      margin: 0 auto 35px auto;
+      opacity: 0;
+      transform: scale(0.5) rotate(-5deg);
+      animation: logo-enter 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      animation-delay: 1.2s;
+    }
+    
+    .logo-container {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #ffffff;
+      padding: 6px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+    }
+    
+    .logo-container:hover {
+      transform: translateY(-8px) scale(1.05) rotate(2deg);
+      box-shadow: 0 24px 48px rgba(96, 26, 46, 0.12), 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+    
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    @keyframes logo-enter {
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+    
+    /* Typography Styles */
+    .titles-group {
+      margin-bottom: 35px;
+    }
+    
+    .title-en {
+      font-family: var(--font-en);
+      font-size: 1.65rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      letter-spacing: -0.6px;
+      margin-bottom: 12px;
+      line-height: 1.35;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: element-fade-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 1.8s;
+    }
+    
+    .title-ar {
+      font-family: var(--font-ar);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.45;
+      direction: rtl;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: element-fade-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 2.1s;
+    }
+    
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: var(--primary-color);
+      margin: 30px auto;
+      border-radius: 4px;
+      opacity: 0;
+      transform: scaleX(0);
+      animation: divider-expand 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 2.3s;
+    }
+    
+    .instagram-notice {
+      margin-bottom: 35px;
+    }
+    
+    .notice-en {
+      font-family: var(--font-en);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: element-fade-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 2.5s;
+    }
+    
+    .notice-ar {
+      font-family: var(--font-ar);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      direction: rtl;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: element-fade-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 2.7s;
+    }
+    
+    /* Instagram Action Button */
+    .instagram-link-wrapper {
+      opacity: 0;
+      transform: translateY(15px);
+      animation: element-fade-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 3s;
+      display: inline-block;
+    }
+    
+    .instagram-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 15px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-family: var(--font-en);
+      font-size: 1.15rem;
+      font-weight: 500;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .instagram-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.5s ease;
+      border-radius: 100px;
+    }
+    
+    .instagram-btn:hover {
+      color: #ffffff;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(220, 39, 67, 0.22);
+      border-color: transparent;
+    }
+    
+    .instagram-btn:hover::before {
+      opacity: 1;
+    }
+    
+    .instagram-btn svg {
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), fill 0.5s ease;
+      fill: var(--text-dark);
+    }
+    
+    .instagram-btn:hover svg {
+      transform: rotate(12deg) scale(1.15);
+      fill: #ffffff;
+    }
+    
+    /* Animation Keyframes */
+    @keyframes element-fade-slide {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes divider-expand {
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+    
+    /* Responsive Adaptations */
+    @media (max-width: 580px) {
+      body {
+        padding: 16px;
+      }
+      .card {
+        padding: 45px 28px;
+        border-radius: 28px;
+      }
+      .logo-wrapper {
+        width: 130px;
+        height: 130px;
+        margin-bottom: 25px;
+      }
+      .title-en {
+        font-size: 1.35rem;
+      }
+      .title-ar {
+        font-size: 1.45rem;
+      }
+      .notice-en, .notice-ar {
+        font-size: 1.05rem;
+      }
+      .instagram-btn {
+        padding: 13px 26px;
+        font-size: 1.05rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <canvas id="particles"></canvas>
-
-    <main class="container">
-        <div class="logo">WAJH</div>
-        <div>
-            <span class="badge">Coming Soon</span>
-        </div>
-        <h1>Elevating your digital presence.</h1>
-        <p>We are a premium web development agency crafting modern, fast, and scalable digital experiences. We're launching our new site soon. Updates will be through our Social Media Platforms.</p>
-        
-
-
-        <div class="socials">
-            <a href="https://instagram.com/wajh.bh" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-        </div>
-    </main>
-
-    <script>
-        // Simple subtle particle effect
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        let width, height, particles = [];
-
-        function init() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            particles = [];
-            const particleCount = Math.floor((width * height) / 15000);
-            
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    size: Math.random() * 2 + 0.5,
-                    speedX: (Math.random() - 0.5) * 0.5,
-                    speedY: (Math.random() - 0.5) * 0.5,
-                    opacity: Math.random() * 0.5 + 0.1
-                });
-            }
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, width, height);
-            
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-                ctx.fill();
-                
-                p.x += p.speedX;
-                p.y += p.speedY;
-                
-                if (p.x < 0 || p.x > width) p.speedX *= -1;
-                if (p.y < 0 || p.y > height) p.speedY *= -1;
-            });
-            
-            requestAnimationFrame(draw);
-        }
-
-        window.addEventListener('resize', init);
-        init();
-        draw();
-    </script>
+  <!-- Full Screen Flowing Background Waves -->
+  <div class="background-container">
+    <svg class="wave-svg" viewBox="0 0 1440 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Soft gradients mirroring the logo background texture -->
+        <linearGradient id="wave-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" />
+          <stop offset="60%" stop-color="#f7f8fa" />
+          <stop offset="100%" stop-color="#ededf2" />
+        </linearGradient>
+        <linearGradient id="wave-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" />
+          <stop offset="50%" stop-color="#f0f1f5" />
+          <stop offset="100%" stop-color="#e2e4eb" />
+        </linearGradient>
+        <linearGradient id="wave-grad-3" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#ffffff" />
+          <stop offset="70%" stop-color="#f5f6fa" />
+          <stop offset="100%" stop-color="#e9ebf2" />
+        </linearGradient>
+        <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+          <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000000" flood-opacity="0.035" />
+        </filter>
+      </defs>
+      
+      <!-- Overlapping seamless wave paths. 
+           Each path repeats its wave shape so translating by -50% is a perfect loop. 
+      -->
+      <!-- Wave 1 (Back Layer) -->
+      <path class="wave-layer-1" d="M 0 320 Q 360 220 720 320 T 1440 320 T 2160 320 T 2880 320 L 2880 1200 L 0 1200 Z" filter="url(#shadow)" />
+      
+      <!-- Wave 2 (Middle Layer) -->
+      <path class="wave-layer-2" d="M 0 460 Q 360 380 720 460 T 1440 460 T 2160 460 T 2880 460 L 2880 1200 L 0 1200 Z" filter="url(#shadow)" />
+      
+      <!-- Wave 3 (Front Layer) -->
+      <path class="wave-layer-3" d="M 0 600 Q 360 540 720 600 T 1440 600 T 2160 600 T 2880 600 L 2880 1200 L 0 1200 Z" filter="url(#shadow)" />
+    </svg>
+  </div>
+  <!-- Content Card -->
+  <main class="card">
+    <!-- Icon Container -->
+    <div class="logo-wrapper">
+      <div class="logo-container">
+        <img src="logo.jpg" alt="Wajh Logo">
+      </div>
+    </div>
+    <!-- Titles Section -->
+    <div class="titles-group">
+      <h1 class="title-en">A digital presence setting you apart.</h1>
+      <h2 class="title-ar">واجهة رقمية تميّزك عن الجميع</h2>
+    </div>
+    <!-- Burgundy Elegant Divider -->
+    <div class="divider"></div>
+    <!-- Notice / Wait Message -->
+    <div class="instagram-notice">
+      <p class="notice-en">Wait for us on Instagram</p>
+      <p class="notice-ar">انتظرونا على إنستغرام</p>
+    </div>
+    <!-- Instagram Link Button -->
+    <div class="instagram-link-wrapper">
+      <a href="https://www.instagram.com/wajh.bh/" target="_blank" class="instagram-btn" aria-label="Visit wajh.bh on Instagram">
+        <!-- SVG Instagram Logo -->
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+        </svg>
+        <span>wajh.bh</span>
+      </a>
+    </div>
+  </main>
 </body>
 </html>
